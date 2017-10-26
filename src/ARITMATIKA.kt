@@ -2,15 +2,17 @@ class operasi{
     var angka1:Int = 0
     var angka2:Int = 0
 
+
     fun pilihan(){
+        var op=operasi()
         println("apakah anda ingin mengulangi?(Y/N) : ")
         var pilihan:String
         pilihan= readLine()!!.toString()
 
         if (pilihan=="Y"||pilihan=="y"){
-            println("lagi")
+            op.utama()
         }else if (pilihan=="N"||pilihan=="n"){
-            print("selesai")
+            print("Terima kasih telah mencoba aplikasi ini")
         }else{
             println("parameter andasalah")
             return pilihan()
@@ -34,7 +36,7 @@ class operasi{
     }
 
     fun kurang(){
-        println("----anda memilih penjumlahan---")
+        println("----anda memilih pengurangan---")
         print("masukkan angka pertama : ")
         angka1= readLine()!!.toInt()
         print("masukkan angka pertama : ")
@@ -48,7 +50,7 @@ class operasi{
     }
 
     fun kali(){
-        println("----anda memilih penjumlahan---")
+        println("----anda memilih perkalian---")
         print("masukkan angka pertama : ")
         angka1= readLine()!!.toInt()
         print("masukkan angka pertama : ")
@@ -62,7 +64,7 @@ class operasi{
     }
 
     fun bagi(){
-        println("----anda memilih penjumlahan---")
+        println("----anda memilih pembagian---")
         print("masukkan angka pertama : ")
         var db1:Double
         db1= readLine()!!.toDouble()
@@ -76,29 +78,37 @@ class operasi{
         println("hasil pembagian $db1 dan $db2 adalah $hasil")
         pilihan()
     }
+
+    fun utama(){
+        var op=operasi()
+        println("operasi yang diinginkan : ")
+        println("1. penjulahan ")
+        println("2. pengurangan ")
+        println("3. perkalian ")
+        println("4. pembagian ")
+
+        println("masukkan pilihan anda (1/2/3/4) : ")
+        var pilih:Int=0
+        pilih= readLine()!!.toInt()
+
+        if (pilih==1){
+            op.jumlah()
+        }else if (pilih==2){
+            op.kurang()
+        }else if (pilih==3){
+            op.kali()
+        }else if (pilih==4){
+            op.bagi()
+        }else {
+            println("maaf pilihan anda tidak dikenali")
+            println("----silahkan masukkan pilihan yang benar----")
+            println()
+            utama()
+        }
+    }
 }
 
 fun main(args: Array<String>) {
     var op=operasi()
-    println("operasi yang diinginkan : ")
-    println("1. penjulahan ")
-    println("2. pengurangan ")
-    println("3. perkalian ")
-    println("4. pembagian ")
-
-    println("masukkan pilihan anda (1/2/3/4) : ")
-    var pilih:Int=0
-    pilih= readLine()!!.toInt()
-
-    if (pilih==1){
-        op.jumlah()
-    }else if (pilih==2){
-        op.kurang()
-    }else if (pilih==3){
-        op.kali()
-    }else if (pilih==4){
-        op.bagi()
-    }else {
-        print("maaf pilihan anda tidak dikenali")
-    }
+    op.utama()
 }
